@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Website</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+   
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      border: none;
+      outline: none;
+      scroll-behavior: smooth;
+      font-family: "Poppins", sans-serif;
+    }
+
+  
+    :root {
+      --bg-color: #080808;
+      --second-bg-color: #131313;
+      --text-color: white;
+      --main-color: #ff00aad8;
+    }
+
+   
+    html {
+      font-size: 60%;
+      overflow-x: hidden;
+    }
+
+    
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 4rem 12% 4rem;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 5;
+    }
+
+    
+    .logo {
+      font-size: 3rem;
+      color: var(--text-color);
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+    }
+
+    .logo span {
+      text-shadow: 0 0 25px var(--main-color);
+    }
+
+    
+    .navbar a {
+      font-size: 1.8rem;
+      color: var(--text-color);
+      margin-left: 4rem;
+      font-weight: 500;
+      transition: 0.3s ease;
+      border-bottom: 3px solid transparent;
+    }
+
+    .navbar a:hover,
+    .navbar a:active {
+      color: var(--main-color);
+      border-bottom: 3px solid var(--main-color);
+    }
+
+    
+
+    
+    .home {
+      padding: 100px 10%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10rem; 
+    }
+
+    .home-content {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      text-align: left;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+
+    span {
+      color: var(--main-color);
+    }
+
+    .logo span {
+      color: var(--main-color);
+    }
+
+    .home-content h3 {
+      margin-bottom: 2rem;
+      margin-top: 1rem;
+      font-size: 3rem;
+    }
+
+    .home-content h1 {
+      font-size: 7rem;
+      font-weight: 700;
+      margin-top: 1.5rem;
+      line-height: 1;
+    }
+
+    
+    .home-img {
+      position: relative;
+      top: 3rem;
+    }
+
+    .home-img img {
+      width: 32vw;
+      border-radius: 50%;
+      box-shadow: 0 0 25px var(--main-color);
+      cursor: pointer;
+      transition: 0.4s ease-in-out;
+    }
+
+    
+    .home-img img:hover {
+      box-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color), 0 0 100px var(--main-color);
+    }
+
+    .home-content p {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.8;
+      max-width: 1000px;
+    }
+
+    
+    .social-icons a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 4.5rem;
+      height: 4.5rem;
+      background: transparent;
+      border: 2px solid var(--main-color);
+      font-size: 2.5rem;
+      border-radius: 50%;
+      color: var(--main-color);
+      margin: 3rem 1.5rem 3rem 0;
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    .social-icons a:hover {
+      background-color: var(--main-color);
+      color: black; /* Change text color when hovering */
+      transform: scale(1.1); /* Optional, to enlarge the icon on hover */
+    }
+    .btn{
+      display:inline-block;
+      padding: 1rem, 2.8rem;
+      background: var(--main-color);
+      box-shadow: 0 0 25px var(--main-color);
+      border-radius: 3rem;
+      font-size: 1.6rem;
+      color: black;
+      border: 6px solid transparent;
+      letter-spacing: 0.1rem;
+      font-weight:600;
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    /* Button hover effect */
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 50px var(--main-color);
+    }
+
+   
+    .text-animation{
+      font-size: 34px;
+      font-weight: 600;
+      min-width: 280px;
+    }
+    .text-animation span{
+      position: relative;
+    }
+    .text-animation span::before{
+      content: "Web Developer";
+      color: var(--main-color);
+      animation: words 20s infinite;
+    }
+    .text-animation span::after{
+      content: "";
+      background-color: var(--bg-color);
+      position: absolute;
+      width: calc(100% + 8px);
+      height: 100%;
+      border-left: 3px solid var(--bg-color);
+      right: -8px;
+      animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
+    }
+    @keyframes cursor{
+      to{
+        border-left: 2px solid var(--main-color);
+      }
+    }
+    @keyframes words{
+      0%,
+      20%{
+        content: "I'am Student";
+      }
+      21%,
+      40%{
+        content: "From PLSP";
+      }
+      41%,
+      60%{
+        content: "BS Information and Technology";
+        
+      }
+      61%,
+      80%{
+        content: "Software Developer";
+      }
+      81%,
+      100%{
+        content: "BSIT-2D ";
+      }
+    }
+    @keyframes typing{
+      10%,15%,30%,35%,50%,55%,70%,75%,90%,5%{
+        width: 0;
+      }
+      5%,20%,25%,40%,45%,60%,65%,80%,85%{
+        width: cal(100%+ 8px)
+      }
+    }
+    .about-me{
+      background: var(--second-bg-color);
+      padding: 90px 100px;
+    }
+    .about-box  {
+      background-size: cover;
+      display: flex;
+      align-items:center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .aboutme{
+      background-color: rgba(0, 0, 0, 0, 0.7);
+      border: 3px solid rgba(238, 238, 238, 0.2);
+      min-height: 430px;
+      max-width: 1000px;
+      padding: 10px 100px;
+      border-radius: 4rem;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+    .aboutme:hover{
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--main-color);
+
+    }
+
+
+   .aboutme p {
+      color: white;
+      font-size: 17px;
+      font-weight: 10000;
+      line-height: 22px;
+      text-align: center;
+      justify-content: center;
+    }
+    /* Fade-in and fade-out animation */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 5;
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 5;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+
+    .fade-in {
+      animation: fadeIn 2s forwards;
+    }
+
+    .fade-out {
+      animation: fadeOut 2s forwards; 
+    }
+    .about-me {
+      opacity: 0;
+    }
+    .heading {
+      font-size: 8rem;
+      text-align: center;
+      margin: 5rem;
+    }
+
+    .education {
+      padding: 100px 15px;
+    }
+
+    .education h2 {
+      margin-bottom: 5rem;
+    }
+
+    .timeline-items {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .timeline-items::before {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 100%;
+      background-color: var(--main-color);
+      left: calc(50% - 1px);
+    }
+
+    .timeline-item {
+      margin-bottom: 40px;
+      width: 100%;
+      position: relative;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item:nth-child(odd) {
+      padding-right: calc(50% + 30px);
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      padding-left: calc(50% + 30px);
+    }
+
+    .timeline-dot {
+      height: 21px;
+      width: 21px;
+      background-color: var(--main-color);
+      box-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color);
+      position: absolute;
+      left: calc(50% - 8px);
+      border-radius: 50%;
+      top: 10px;
+    }
+
+    .timeline-date {
+      font-size: 20px;
+      font-weight: 800;
+      color: white;
+      margin: 6px 0 15px;
+    }
+
+    .timeline-content {
+      background-color: var(--bg-color);
+      border: 3px solid var(--main-color);
+      padding: 30px 50px;
+      border-radius: 4rem;
+      box-shadow: 0 0 10px var(--main-color);
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+    .timeline-content:hover{
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--main-color);
+
+    }
+
+    .timeline-content h3 {
+      font-size: 20px;
+      color: white;
+      margin: 0 0 10px;
+      font-weight: 500;
+    }
+
+    .timeline-content li {
+      color: white;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 22px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 15px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--main-color);
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: var(--bg-color);
+      width:50px;
+    }
+    .timeline-content {
+    opacity: 0;
+    transform: translateX(0); 
+    transition: all 0.7s ease-in-out;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content.show {
+      opacity: 1;
+      transform: translateX(-5px);
+    }
+
+    .timeline-item:nth-child(even) .timeline-content.show {
+      opacity: 1;
+      transform: translateX(5px);
+    }
+
+    
+    .skills {
+    background: var(--second-bg-color);
+    padding: 90px 100px;
+    }
+
+    .skill-p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--main-color);
+    margin-bottom: 2rem;
+    }
+
+      .container {
+      display: flex;
+      flex-wrap: wrap; 
+      gap: 30px;
+      }
+
+
+      .left-column {
+      width: 30%; 
+      background-color: var(--bg-color);
+      border: 3px solid var(--main-color);
+      padding: 30px 50px;
+      border-radius: 4rem;
+      box-shadow: 0 0 10px var(--main-color);
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+
+    .left-column h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .right-column {
+      width: 65%; 
+      display: flex;
+      flex-direction: column;
+      gap: 50px; 
+    }
+
+    .top-right-column,
+    .bottom-right-column {
+      background-color: var(--bg-color);
+      border: 3px solid var(--main-color);
+      padding: 50px 50px;
+      border-radius: 4rem;
+      box-shadow: 0 0 10px var(--main-color);
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+
+    .top-right-column h2,
+    .bottom-right-column h2 {
+      font-size: 1.8rem;
+      margin-bottom: px;
+    }
+    .top-right-column:hover,.bottom-right-column:hover, .left-column:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--main-color);
+
+    }
+    .container li, p {
+      color: white;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 22px;
+    }
+    .skill {
+    margin: 15px 0;
+    }
+
+    .skill h3 {
+      font-size: 1.5rem;
+    }
+
+    progress {
+      width: 100%;
+      height: 18px;
+      margin-top: 5px;
+    }
+
+    progress[value] {
+      appearance: none;
+      border: 3px solid rgba(238, 238, 238, 0.2);
+      background-color: #f0f0f000;
+      border-radius: 8px;
+    }
+
+    progress::-webkit-progress-bar {
+      background-color: #f0f0f000;
+      border-radius: 8px;
+    }
+
+    progress::-webkit-progress-value {
+      background-color: 0 0 25px var(--main-color); 
+      box-shadow: 0 0 10px var(--main-color);
+    }
+    progress::-webkit-progress-bar:hover{
+      transform: scale(1.01);
+      box-shadow: 0 0 25px var(--main-color);
+
+    }
+    progress::-webkit-progress-value:hover{
+      transform: scale(1.05);
+      background-color: var(--main-color);
+
+    }
+    .Footer {
+      position: relative;
+      bottom: 0;
+      width: 100%; 
+      padding: 40px 0;
+     
+    }
+
+    .Footer .social {
+      text-align: center;
+      padding-bottom: 30px;
+      color: var(--main-color);
+    }
+
+    .Footer .social a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 4.5rem;
+      height: 4.5rem;
+      background: transparent;
+      border: 2px solid var(--main-color);
+      font-size: 2.5rem;
+      border-radius: 50%;
+      color: var(--main-color);
+      margin: 3rem 1.5rem 3rem 0;
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    .Footer .social a:hover {
+      background-color: var(--main-color);
+      color: black;
+      transform: scale(1.1); 
+    }
+   
+    .section-bg {
+      transition: background-color 0.5s ease-in-out;
+    }
+
+    .section-bg.visible {
+      background-color: var(--main-color);
+    }
+    
+
+            
+  </style>
+</head>
+<body>
+
+  
+  <header class="header">
+    <a href="#home" class="logo">Hazel Ann<span>Tallud</span></a>
+
+    <nav class="navbar">
+      <a href="#home" class="active">Home</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  
+  <section class="home" id="home">
+    <div class="home-content">
+      <h1>Hi, It's <span>Hazel Ann</span></h1>
+      <h3 class="text-animation">- <span></span></h3>
+      <p>San Jose, San Antonio Quezon, ilat, 4324</p>
+      <p>09453141243</p>
+      <p>hazelanntallud28@gmail.com</p>
+
+      <div class="social-icons">
+        <a href="https://github.com/fafeta"><i class='bx bxl-github'></i></a>
+        <a href="https://www.facebook.com/hazelann.tallud.1"><i class='bx bxl-facebook'></i></a>
+        <a href="https://www.instagram.com/mink_mula_mwhh/"><i class='bx bxl-instagram-alt'></i></a>
+      
+      </div>
+
+      
+      <div >
+        <a href="#about-me" class="btn">About Me</a>
+        
+      </div>
+    </div>
+
+  
+    <div class="home-img">
+      <img src="C:\Users\John Mark Tallud\Desktop\practice ulit\picture\photo_6091453181801382745_y.jpg" alt="Amelia's Photo">
+    </div>
+  </section>
+  <section class="about-me" id="about-me">
+    <div class="about-box">
+      <h2 class="heading">About <span>Me<span></h2>
+      <div class="aboutme">
+   
+        <p>
+          Hello! I'm Hazel Ann Tallud, a motivated and dedicated second-year Information Technology student at Pamantasan ng Lungsod ng San Pablo. I have a strong foundation in digital tools and programming, with hands-on experience in Microsoft Office, C#, HTML, CSS, SQL, Java, JavaScript, databases, and Visual Studio. I enjoy using these skills to tackle challenges and develop innovative solutions. 
+          
+          Through collaborative projects, I’ve learned the importance of teamwork, adaptability, and creativity, and I’m eager to apply these qualities to real-world tech challenges. I’m always seeking opportunities to grow, learn, and contribute meaningfully to forward-thinking organizations. 
+          <br><br>
+          
+          My journey as a developer began with curiosity, and over time, it has evolved into a deep passion for solving problems through technology. Whether it's optimizing performance, designing intuitive user interfaces, or exploring new frameworks, I love diving into challenges and constantly pushing myself to improve. 
+          <br><br>
+          
+          I believe in lifelong learning and strive to stay updated with the latest trends and best practices in tech. 
+          
+          When I’m not coding, I enjoy exploring graphic design, photography, and working on personal creative projects. I believe that design and technology go hand-in-hand, and I bring a creative mindset to every project I take on.
+          </p>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="education" id="education">
+    <h2 class="heading">Education</h2>
+
+    <div class="timeline-items">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+          <div class="timeline-date">2022-Present</div>
+          <div class="timeline-content">
+            <h3>Pamantasan ng Lungsod ng San Pablo</h3>
+            <li>Bachelor of Science in Information and Technology</li>
+            <li>Second-Year College</li>
+            
+          </div>
+        
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+          <div class="timeline-date">2020-2022</div>
+          <div class="timeline-content">
+            <h3>Asian Institute of Education and Technology</h3>
+            <li>Taiong, Quezon</li>
+          </div>
+       
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+          <div class="timeline-date">2017-2020</div>
+          <div class="timeline-content">
+            <h3>Junito C. Wagan National High School</h3>
+            <li>San Jose, San Antonio Quezon</li>
+          </div>
+        
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+          <div class="timeline-date">2010-2017</div>
+          <div class="timeline-content">
+            <h3>Pury Elementary School</h3>
+            <li>Pury, San Antonio Quezon</li>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  <section class="skills" id="skills">
+    <h2 class="heading">Skills</h2>
+   
+
+    <div class="container">
+      <div class="left-column">
+        <div class="skill-p">Skills</div>
+        <div class="skill">
+          <h3>MS Office</h3>
+          <progress value="60" max="100">90%</progress>
+         </div>
+        
+          <div class="skill">
+          <h3>c#</h3>
+          <progress value="30" max="100">80%</progress>
+          </div>
+
+          <div class="skill">
+            <h3>SQL</h3>
+            <progress value="30" max="100">70%</progress>
+          </div>
+          <div class="skill">
+            <h3>HTML & CSS</h3>
+            <progress value="40" max="100">70%</progress>
+            </div>
+        
+          <div class="skill">
+          <h3>Java</h3>
+          <progress value="26" max="100">70%</progress>
+          </div>
+
+          <div class="skill">
+            <h3>JavaScript</h3>
+            <progress value="25" max="100">70%</progress>
+            </div>
+      </div>
+  
+      <div class="right-column">
+        <div class="top-right-column">
+          <div class="skill-p">Achievements</div>
+          <p> dhfdh dchv dshhvsiir hbfgyr sjifrbdhyb h fhbfhx rg r .</p>
+        </div>
+        <div class="bottom-right-column">
+          <div class="skill-p">Language</div>
+          <li>Tagalog</li>
+          <li>English</li>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="Footer">
+    <div class="social">
+      <a href="https://github.com/fafeta"><i class='bx bxl-github'></i></a>
+        <a href="https://www.facebook.com/hazelann.tallud.1"><i class='bx bxl-facebook'></i></a>
+        <a href="https://www.instagram.com/mink_mula_mwhh/"><i class='bx bxl-instagram-alt'></i></a>
+
+        <p>Contact me</pp>
+    </div>
+    <div class="contact" id="contact"><div/>
+  </footer>
+  
+  
+
+  
+  <script>
+    let navbar = document.querySelector('.navbar');
+    let section = document.querySelectorAll('section');
+    let navLinks = document.querySelectorAll('header nav a');
+
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section'); 
+      const navLinks = document.querySelectorAll('header nav a'); 
+
+      sections.forEach(sec => {
+        let top = window.scrollY; 
+        let offset = sec.offsetTop - 150; 
+        let height = sec.offsetHeight; 
+        let id = sec.getAttribute('id'); 
+
+        if (top >= offset && top < offset + height) {
+          navLinks.forEach(link => {
+            link.classList.remove('active'); 
+          });
+          const activeLink = document.querySelector(`header nav a[href="#${id}"]`); 
+            if (activeLink) {
+             activeLink.classList.add('active'); 
+          }
+        }
+      });
+    });
+  
+    document.addEventListener('DOMContentLoaded', function () {
+    const aboutMeSection = document.querySelector('.about-me');
+
+    function checkVisibility() {
+      const sectionTop = aboutMeSection.getBoundingClientRect().top; 
+      const sectionHeight = aboutMeSection.offsetHeight; 
+      const windowHeight = window.innerHeight; 
+
+      if (sectionTop < windowHeight && sectionTop + sectionHeight > 0) {
+        aboutMeSection.classList.add('fade-in');
+        aboutMeSection.classList.remove('fade-out');
+      } else {
+        aboutMeSection.classList.add('fade-out');
+        aboutMeSection.classList.remove('fade-in');
+      }
+    }   
+
+    window.addEventListener('scroll', checkVisibility);
+
+    checkVisibility();
+    });
+
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          } else {
+            entry.target.classList.remove('show'); 
+          }
+        });
+      }, {
+        threshold: 0.2
+      });
+
+      document.querySelectorAll('.timeline-content').forEach(el => {
+        observer.observe(el);
+      });
+
+
+
+
+    
+
+  </script>
+
+</body>
+</html>
